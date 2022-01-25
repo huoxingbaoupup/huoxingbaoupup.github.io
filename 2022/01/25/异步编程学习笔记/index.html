@@ -16,26 +16,21 @@
   <meta name="author" content="Alvin Li">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.迁移流程2.测试环境准备测试库建立与现在正式库相同的表结构和存储过程 SSIS服务器建立用于抄取原始数据的项目封包 3.切换操作登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次  4.验证切换   类别 分类 项目 备注    系统 智能中心 筛选功能正常使用 因切换了机">
+    <meta name="description" content="1.0 异步编程简介这是异步编程课程的一系列笔记，课程地址：Asynchronous Programming in C# and .NET Core 什么是异步编程同步程序中的代码运行在单一线程上。 异步操作：从其它线程发起后，在一个新的单独线程上运行的操作。发起异步操作的线程不必等待异步操作完成。 为什么使用异步编程对于需要长时间运行的操作，异步编程可以更大限度更有效地利用设备资源。  通过异步">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Webacess稼动率迁移计划">
-<meta property="og:url" content="http://example.com/2022/01/25/Webacess%E7%A8%BC%E5%8A%A8%E7%8E%87%E8%BF%81%E7%A7%BB%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:title" content="异步编程学习笔记">
+<meta property="og:url" content="http://example.com/2022/01/25/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="LiYaTong&#39;s Blog">
-<meta property="og:description" content="1.迁移流程2.测试环境准备测试库建立与现在正式库相同的表结构和存储过程 SSIS服务器建立用于抄取原始数据的项目封包 3.切换操作登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次  4.验证切换   类别 分类 项目 备注    系统 智能中心 筛选功能正常使用 因切换了机">
+<meta property="og:description" content="1.0 异步编程简介这是异步编程课程的一系列笔记，课程地址：Asynchronous Programming in C# and .NET Core 什么是异步编程同步程序中的代码运行在单一线程上。 异步操作：从其它线程发起后，在一个新的单独线程上运行的操作。发起异步操作的线程不必等待异步操作完成。 为什么使用异步编程对于需要长时间运行的操作，异步编程可以更大限度更有效地利用设备资源。  通过异步">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410468888-4fcf777c-5445-4a17-afff-2ea1391a757a.png#align=left&display=inline&height=394&margin=%5Bobject%20Object%5D&name=image.png&originHeight=394&originWidth=295&size=18587&status=done&style=shadow&width=295">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410632104-5779a17a-34da-4664-a9b7-8025b7ab4370.png#align=left&display=inline&height=310&margin=%5Bobject%20Object%5D&name=image.png&originHeight=310&originWidth=296&size=17843&status=done&style=shadow&width=296">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410865587-805ec03b-77a0-476f-ad2e-3783193aa47f.png#align=left&display=inline&height=789&margin=%5Bobject%20Object%5D&name=image.png&originHeight=789&originWidth=1426&size=68655&status=done&style=none&width=1426">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411262977-89ded748-548f-473d-aeb0-aba11a5c173e.png#align=left&display=inline&height=908&margin=%5Bobject%20Object%5D&name=image.png&originHeight=908&originWidth=1442&size=179507&status=done&style=none&width=1442">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411310580-c2057e84-ff0b-4048-8e0e-7eec0e682277.png#align=left&display=inline&height=910&margin=%5Bobject%20Object%5D&name=image.png&originHeight=910&originWidth=1440&size=168725&status=done&style=none&width=1440">
-<meta property="article:published_time" content="2022-01-25T07:56:33.992Z">
-<meta property="article:modified_time" content="2022-01-25T08:04:13.727Z">
+<meta property="article:published_time" content="2022-01-25T09:44:42.000Z">
+<meta property="article:modified_time" content="2022-01-25T09:51:38.638Z">
 <meta property="article:author" content="Alvin Li">
+<meta property="article:tag" content=".net">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410468888-4fcf777c-5445-4a17-afff-2ea1391a757a.png#align=left&display=inline&height=394&margin=%5Bobject%20Object%5D&name=image.png&originHeight=394&originWidth=295&size=18587&status=done&style=shadow&width=295">
   
   
-  <title>Webacess稼动率迁移计划 - LiYaTong&#39;s Blog</title>
+  <title>异步编程学习笔记 - LiYaTong&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -181,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Webacess稼动率迁移计划">
+            <span class="h2" id="subtitle" title="异步编程学习笔记">
               
             </span>
 
@@ -191,7 +186,7 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-25 15:56" pubdate>
+      <time datetime="2022-01-25 17:44" pubdate>
         2022年1月25日 下午
       </time>
     </span>
@@ -202,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      296 字
+      744 字
     </span>
   
 
@@ -211,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      7 分钟
     </span>
   
 
@@ -240,47 +235,76 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Webacess稼动率迁移计划</h1>
+            <h1 style="display: none">异步编程学习笔记</h1>
             
             <div class="markdown-body">
-              <h2 id="1-迁移流程"><a href="#1-迁移流程" class="headerlink" title="1.迁移流程"></a>1.迁移流程</h2><h2 id="2-测试环境准备"><a href="#2-测试环境准备" class="headerlink" title="2.测试环境准备"></a>2.测试环境准备</h2><h4 id="测试库建立与现在正式库相同的表结构和存储过程"><a href="#测试库建立与现在正式库相同的表结构和存储过程" class="headerlink" title="测试库建立与现在正式库相同的表结构和存储过程"></a>测试库建立与现在正式库相同的表结构和存储过程</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410468888-4fcf777c-5445-4a17-afff-2ea1391a757a.png#align=left&display=inline&height=394&margin=%5Bobject%20Object%5D&name=image.png&originHeight=394&originWidth=295&size=18587&status=done&style=shadow&width=295" srcset="/img/loading.gif" lazyload alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410632104-5779a17a-34da-4664-a9b7-8025b7ab4370.png#align=left&display=inline&height=310&margin=%5Bobject%20Object%5D&name=image.png&originHeight=310&originWidth=296&size=17843&status=done&style=shadow&width=296" srcset="/img/loading.gif" lazyload alt="image.png"></p>
-<h4 id="SSIS服务器建立用于抄取原始数据的项目封包"><a href="#SSIS服务器建立用于抄取原始数据的项目封包" class="headerlink" title="SSIS服务器建立用于抄取原始数据的项目封包"></a>SSIS服务器建立用于抄取原始数据的项目封包</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410865587-805ec03b-77a0-476f-ad2e-3783193aa47f.png#align=left&display=inline&height=789&margin=%5Bobject%20Object%5D&name=image.png&originHeight=789&originWidth=1426&size=68655&status=done&style=none&width=1426" srcset="/img/loading.gif" lazyload alt="image.png"></p>
-<h2 id="3-切换操作"><a href="#3-切换操作" class="headerlink" title="3.切换操作"></a>3.切换操作</h2><h4 id="登录10-89-165-124-SSIS服务器，打开SQL-Server-Management设定SSIS-封包-HA-JDL-PLC定时执行JOB，设置为30分钟执行一次"><a href="#登录10-89-165-124-SSIS服务器，打开SQL-Server-Management设定SSIS-封包-HA-JDL-PLC定时执行JOB，设置为30分钟执行一次" class="headerlink" title="登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次"></a>登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411262977-89ded748-548f-473d-aeb0-aba11a5c173e.png#align=left&display=inline&height=908&margin=%5Bobject%20Object%5D&name=image.png&originHeight=908&originWidth=1442&size=179507&status=done&style=none&width=1442" srcset="/img/loading.gif" lazyload alt="image.png"></p>
-<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411310580-c2057e84-ff0b-4048-8e0e-7eec0e682277.png#align=left&display=inline&height=910&margin=%5Bobject%20Object%5D&name=image.png&originHeight=910&originWidth=1440&size=168725&status=done&style=none&width=1440" srcset="/img/loading.gif" lazyload alt="image.png"></p>
-<h2 id="4-验证切换"><a href="#4-验证切换" class="headerlink" title="4.验证切换"></a>4.验证切换</h2><table>
-<thead>
-<tr>
-<th align="center">类别</th>
-<th align="center">分类</th>
-<th align="center">项目</th>
-<th align="center">备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">系统</td>
-<td align="center">智能中心</td>
-<td align="center">筛选功能正常使用</td>
-<td align="center">因切换了机台明细表，所以要保证筛选下拉功能能够正常带出机台类别</td>
-</tr>
-<tr>
-<td align="center">数据</td>
-<td align="center">Procedure</td>
-<td align="center">Procedure能够正常执行，无异常</td>
-<td align="center"></td>
-</tr>
-<tr>
-<td align="center">数据</td>
-<td align="center">Table</td>
-<td align="center">机台信息表要与原库表保持一致</td>
-<td align="center">select count(*) from mcs.ha_fpc_jdl_equ_info</td>
-</tr>
-</tbody></table>
+              <h1 id="1-0-异步编程简介"><a href="#1-0-异步编程简介" class="headerlink" title="1.0 异步编程简介"></a>1.0 异步编程简介</h1><p>这是异步编程课程的一系列笔记，课程地址：<a target="_blank" rel="noopener" href="https://courses.edx.org/courses/course-v1:Microsoft+DEV235x+2T2018/course/">Asynchronous Programming in C# and .NET Core</a></p>
+<h2 id="什么是异步编程"><a href="#什么是异步编程" class="headerlink" title="什么是异步编程"></a>什么是异步编程</h2><p>同步程序中的代码运行在单一线程上。</p>
+<p>异步操作：从其它线程发起后，在一个新的单独线程上运行的操作。发起异步操作的线程不必等待异步操作完成。</p>
+<h2 id="为什么使用异步编程"><a href="#为什么使用异步编程" class="headerlink" title="为什么使用异步编程"></a>为什么使用异步编程</h2><p>对于需要长时间运行的操作，异步编程可以更大限度更有效地利用设备资源。</p>
+<ul>
+<li><p>通过异步执行 CPU 或 I/O 绑定操作，提高 UI 程序的响应性</p>
+</li>
+<li><p>并行计算</p>
+</li>
+</ul>
+<h2 id="什么时候使用异步编程"><a href="#什么时候使用异步编程" class="headerlink" title="什么时候使用异步编程"></a>什么时候使用异步编程</h2><p>异步适用于 CPU 绑定或 I/O 绑定操作，例如：</p>
+<ul>
+<li><p>I/O 从网络检索数据</p>
+</li>
+<li><p>CPU 密集操作，例如使用大量数据进行科学计算</p>
+</li>
+<li><p>I/O 读写硬盘</p>
+</li>
+</ul>
+<h2 id="最适合应用异步编程的程序"><a href="#最适合应用异步编程的程序" class="headerlink" title="最适合应用异步编程的程序"></a>最适合应用异步编程的程序</h2><ul>
+<li><p>桌面 UI 程序</p>
+</li>
+<li><ul>
+<li>WinForms</li>
+</ul>
+</li>
+<li><ul>
+<li>WPF</li>
+</ul>
+</li>
+<li><ul>
+<li>UWP</li>
+</ul>
+</li>
+<li><p>Web Server 程序</p>
+</li>
+</ul>
+<p>Web Server 虽然不必与 UI 进行交互，但经常需要进行远程的数据库查询或计算分析大量数据，这些任务的执行时长都不算短。而作为 Web Server 又难免同时处理来自多个客户端的请求，这时引入异步编程可以避免先过来的请求发起的<strong>线程</strong>还在等待执行某些操作，后面的请求又来一大堆直接淹没了 WebServer，导致性能降低和延迟升高。</p>
+<h2 id="异步编程不是万能的"><a href="#异步编程不是万能的" class="headerlink" title="异步编程不是万能的"></a>异步编程不是万能的</h2><ol>
+<li>不要无脑使用异步，有些问题异步也无法解决，而且异步本身也会带来一些问题：</li>
+<li>异步代码自身不带来任何的性能提升。它只让资源管理更高效</li>
+<li>异步代码给程序带来更大的开销</li>
+<li>memory overhead：每个线程启动时要占用设备的虚拟内存</li>
+<li>scheduler overhead：调度程序开销，操作系统需要管理该在哪个 CPU 执行哪个线程以及何时执行</li>
+<li>如果你不是 UI 程序，而且你代码里面也没有网络或 I/O 绑定操作，异步对你基本没什么增益</li>
+<li>如果你的程序是 CPU-bound，使用多线程技术（module 2）好过使用异步编程</li>
+</ol>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Everyday-net/">Everyday .net</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/net/">.net</a>
+                    
+                  </div>
                 
               </div>
               
@@ -295,18 +319,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/25/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">异步编程学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/01/24/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2022/01/25/Webacess%E7%A8%BC%E5%8A%A8%E7%8E%87%E8%BF%81%E7%A7%BB%E8%AE%A1%E5%88%92/">
+                        <span class="hidden-mobile">Webacess稼动率迁移计划</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

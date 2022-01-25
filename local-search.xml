@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>异步编程学习笔记</title>
+    <link href="/2022/01/25/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2022/01/25/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-0-异步编程简介"><a href="#1-0-异步编程简介" class="headerlink" title="1.0 异步编程简介"></a>1.0 异步编程简介</h1><p>这是异步编程课程的一系列笔记，课程地址：<a href="https://courses.edx.org/courses/course-v1:Microsoft+DEV235x+2T2018/course/">Asynchronous Programming in C# and .NET Core</a></p><h2 id="什么是异步编程"><a href="#什么是异步编程" class="headerlink" title="什么是异步编程"></a>什么是异步编程</h2><p>同步程序中的代码运行在单一线程上。</p><p>异步操作：从其它线程发起后，在一个新的单独线程上运行的操作。发起异步操作的线程不必等待异步操作完成。</p><h2 id="为什么使用异步编程"><a href="#为什么使用异步编程" class="headerlink" title="为什么使用异步编程"></a>为什么使用异步编程</h2><p>对于需要长时间运行的操作，异步编程可以更大限度更有效地利用设备资源。</p><ul><li><p>通过异步执行 CPU 或 I/O 绑定操作，提高 UI 程序的响应性</p></li><li><p>并行计算</p></li></ul><h2 id="什么时候使用异步编程"><a href="#什么时候使用异步编程" class="headerlink" title="什么时候使用异步编程"></a>什么时候使用异步编程</h2><p>异步适用于 CPU 绑定或 I/O 绑定操作，例如：</p><ul><li><p>I/O 从网络检索数据</p></li><li><p>CPU 密集操作，例如使用大量数据进行科学计算</p></li><li><p>I/O 读写硬盘</p></li></ul><h2 id="最适合应用异步编程的程序"><a href="#最适合应用异步编程的程序" class="headerlink" title="最适合应用异步编程的程序"></a>最适合应用异步编程的程序</h2><ul><li><p>桌面 UI 程序</p></li><li><ul><li>WinForms</li></ul></li><li><ul><li>WPF</li></ul></li><li><ul><li>UWP</li></ul></li><li><p>Web Server 程序</p></li></ul><p>Web Server 虽然不必与 UI 进行交互，但经常需要进行远程的数据库查询或计算分析大量数据，这些任务的执行时长都不算短。而作为 Web Server 又难免同时处理来自多个客户端的请求，这时引入异步编程可以避免先过来的请求发起的<strong>线程</strong>还在等待执行某些操作，后面的请求又来一大堆直接淹没了 WebServer，导致性能降低和延迟升高。</p><h2 id="异步编程不是万能的"><a href="#异步编程不是万能的" class="headerlink" title="异步编程不是万能的"></a>异步编程不是万能的</h2><ol><li>不要无脑使用异步，有些问题异步也无法解决，而且异步本身也会带来一些问题：</li><li>异步代码自身不带来任何的性能提升。它只让资源管理更高效</li><li>异步代码给程序带来更大的开销</li><li>memory overhead：每个线程启动时要占用设备的虚拟内存</li><li>scheduler overhead：调度程序开销，操作系统需要管理该在哪个 CPU 执行哪个线程以及何时执行</li><li>如果你不是 UI 程序，而且你代码里面也没有网络或 I/O 绑定操作，异步对你基本没什么增益</li><li>如果你的程序是 CPU-bound，使用多线程技术（module 2）好过使用异步编程</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Everyday .net</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>.net</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Webacess稼动率迁移计划</title>
     <link href="/2022/01/25/Webacess%E7%A8%BC%E5%8A%A8%E7%8E%87%E8%BF%81%E7%A7%BB%E8%AE%A1%E5%88%92/"/>
     <url>/2022/01/25/Webacess%E7%A8%BC%E5%8A%A8%E7%8E%87%E8%BF%81%E7%A7%BB%E8%AE%A1%E5%88%92/</url>
