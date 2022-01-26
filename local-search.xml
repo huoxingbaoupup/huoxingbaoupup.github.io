@@ -8,21 +8,9 @@
     <link href="/2022/01/26/%E9%87%8D%E5%BA%86%E6%89%8B%E8%AE%B0/"/>
     <url>/2022/01/26/%E9%87%8D%E5%BA%86%E6%89%8B%E8%AE%B0/</url>
     
-    <content type="html"><![CDATA[<p><img src="C:\Users\Administrator\Desktop\新建文件夹\DSCF0266.JPG" alt="DSCF0266"></p><p><img src="C:\Users\Administrator\Desktop\新建文件夹\DSCF0262.JPG" alt="DSCF0262"></p><p><img src="C:\Users\Administrator\Desktop\新建文件夹\DSCF0264.JPG" alt="DSCF0264"></p><p><img src="C:\Users\Administrator\Desktop\新建文件夹\DSCF0265.JPG" alt="DSCF0265"></p><p><img src="C:\Users\Administrator\Desktop\新建文件夹\DSCF0255.JPG" alt="DSCF0255"></p><p><img src="C:\Users\Administrator\Desktop\新建文件夹\DSCF0259.JPG" alt="DSCF0259"></p><p><img src="C:\Users\Administrator\Desktop\新建文件夹\DSCF0260.JPG" alt="DSCF0260"></p>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight maxima"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs maxima">&#123;<span class="hljs-symbol">%</span> asset_img DSCF0262.JPG This <span class="hljs-built_in">is</span> an <span class="hljs-built_in">example</span> <span class="hljs-built_in">image</span> <span class="hljs-symbol">%</span>&#125;<br></code></pre></td></tr></table></figure>]]></content>
     
     
-    <categories>
-      
-      <category>渔舟唱晚</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>旅拍</tag>
-      
-    </tags>
     
   </entry>
   
