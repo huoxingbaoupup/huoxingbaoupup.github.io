@@ -8,7 +8,7 @@
     <link href="/2022/01/26/%E9%87%8D%E5%BA%86%E6%89%8B%E8%AE%B0/"/>
     <url>/2022/01/26/%E9%87%8D%E5%BA%86%E6%89%8B%E8%AE%B0/</url>
     
-    <content type="html"><![CDATA[<figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown">![](/重庆手记/DSCF0255.JPG)<br></code></pre></td></tr></table></figure><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">&#123;%asset<span class="hljs-emphasis">_img DSCF0255.JPG testPic %&#125;</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown">![](DSCF0255.JPG)<br></code></pre></td></tr></table></figure><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">&#123;%asset<span class="hljs-emphasis">_img DSCF0255.JPG testPic %&#125;</span><br></code></pre></td></tr></table></figure>]]></content>
     
     
     
