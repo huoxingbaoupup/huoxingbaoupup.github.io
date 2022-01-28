@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Alvin Li">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.迁移流程2.测试环境准备测试库建立与现在正式库相同的表结构和存储过程 SSIS服务器建立用于抄取原始数据的项目封包 3.切换操作登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次  4.验证切换   类别 分类 项目 备注    系统 智能中心 筛选功能正常使用 因切换了机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webacess稼动率迁移计划">
+<meta property="og:url" content="http://example.com/2022/01/25/Webacess%E7%A8%BC%E5%8A%A8%E7%8E%87%E8%BF%81%E7%A7%BB%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:site_name" content="LiYaTong&#39;s Blog">
+<meta property="og:description" content="1.迁移流程2.测试环境准备测试库建立与现在正式库相同的表结构和存储过程 SSIS服务器建立用于抄取原始数据的项目封包 3.切换操作登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次  4.验证切换   类别 分类 项目 备注    系统 智能中心 筛选功能正常使用 因切换了机">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410468888-4fcf777c-5445-4a17-afff-2ea1391a757a.png#align=left&display=inline&height=394&margin=%5Bobject%20Object%5D&name=image.png&originHeight=394&originWidth=295&size=18587&status=done&style=shadow&width=295">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410632104-5779a17a-34da-4664-a9b7-8025b7ab4370.png#align=left&display=inline&height=310&margin=%5Bobject%20Object%5D&name=image.png&originHeight=310&originWidth=296&size=17843&status=done&style=shadow&width=296">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410865587-805ec03b-77a0-476f-ad2e-3783193aa47f.png#align=left&display=inline&height=789&margin=%5Bobject%20Object%5D&name=image.png&originHeight=789&originWidth=1426&size=68655&status=done&style=none&width=1426">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411262977-89ded748-548f-473d-aeb0-aba11a5c173e.png#align=left&display=inline&height=908&margin=%5Bobject%20Object%5D&name=image.png&originHeight=908&originWidth=1442&size=179507&status=done&style=none&width=1442">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411310580-c2057e84-ff0b-4048-8e0e-7eec0e682277.png#align=left&display=inline&height=910&margin=%5Bobject%20Object%5D&name=image.png&originHeight=910&originWidth=1440&size=168725&status=done&style=none&width=1440">
+<meta property="article:published_time" content="2022-01-25T07:56:33.992Z">
+<meta property="article:modified_time" content="2022-01-25T08:04:13.727Z">
+<meta property="article:author" content="Alvin Li">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410468888-4fcf777c-5445-4a17-afff-2ea1391a757a.png#align=left&display=inline&height=394&margin=%5Bobject%20Object%5D&name=image.png&originHeight=394&originWidth=295&size=18587&status=done&style=shadow&width=295">
+  
+  
+  <title>Webacess稼动率迁移计划 - LiYaTong&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LiYaTong的专栏</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Webacess稼动率迁移计划">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-25 15:56" pubdate>
+        2022年1月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      296 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Webacess稼动率迁移计划</h1>
+            
+            <div class="markdown-body">
+              <h2 id="1-迁移流程"><a href="#1-迁移流程" class="headerlink" title="1.迁移流程"></a>1.迁移流程</h2><h2 id="2-测试环境准备"><a href="#2-测试环境准备" class="headerlink" title="2.测试环境准备"></a>2.测试环境准备</h2><h4 id="测试库建立与现在正式库相同的表结构和存储过程"><a href="#测试库建立与现在正式库相同的表结构和存储过程" class="headerlink" title="测试库建立与现在正式库相同的表结构和存储过程"></a>测试库建立与现在正式库相同的表结构和存储过程</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410468888-4fcf777c-5445-4a17-afff-2ea1391a757a.png#align=left&display=inline&height=394&margin=%5Bobject%20Object%5D&name=image.png&originHeight=394&originWidth=295&size=18587&status=done&style=shadow&width=295" srcset="/img/loading.gif" lazyload alt="image.png"><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410632104-5779a17a-34da-4664-a9b7-8025b7ab4370.png#align=left&display=inline&height=310&margin=%5Bobject%20Object%5D&name=image.png&originHeight=310&originWidth=296&size=17843&status=done&style=shadow&width=296" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h4 id="SSIS服务器建立用于抄取原始数据的项目封包"><a href="#SSIS服务器建立用于抄取原始数据的项目封包" class="headerlink" title="SSIS服务器建立用于抄取原始数据的项目封包"></a>SSIS服务器建立用于抄取原始数据的项目封包</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609410865587-805ec03b-77a0-476f-ad2e-3783193aa47f.png#align=left&display=inline&height=789&margin=%5Bobject%20Object%5D&name=image.png&originHeight=789&originWidth=1426&size=68655&status=done&style=none&width=1426" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="3-切换操作"><a href="#3-切换操作" class="headerlink" title="3.切换操作"></a>3.切换操作</h2><h4 id="登录10-89-165-124-SSIS服务器，打开SQL-Server-Management设定SSIS-封包-HA-JDL-PLC定时执行JOB，设置为30分钟执行一次"><a href="#登录10-89-165-124-SSIS服务器，打开SQL-Server-Management设定SSIS-封包-HA-JDL-PLC定时执行JOB，设置为30分钟执行一次" class="headerlink" title="登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次"></a>登录10.89.165.124 SSIS服务器，打开SQL Server Management设定SSIS 封包 HA_JDL_PLC定时执行JOB，设置为30分钟执行一次</h4><p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411262977-89ded748-548f-473d-aeb0-aba11a5c173e.png#align=left&display=inline&height=908&margin=%5Bobject%20Object%5D&name=image.png&originHeight=908&originWidth=1442&size=179507&status=done&style=none&width=1442" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2020/png/2450498/1609411310580-c2057e84-ff0b-4048-8e0e-7eec0e682277.png#align=left&display=inline&height=910&margin=%5Bobject%20Object%5D&name=image.png&originHeight=910&originWidth=1440&size=168725&status=done&style=none&width=1440" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<h2 id="4-验证切换"><a href="#4-验证切换" class="headerlink" title="4.验证切换"></a>4.验证切换</h2><table>
+<thead>
+<tr>
+<th align="center">类别</th>
+<th align="center">分类</th>
+<th align="center">项目</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">系统</td>
+<td align="center">智能中心</td>
+<td align="center">筛选功能正常使用</td>
+<td align="center">因切换了机台明细表，所以要保证筛选下拉功能能够正常带出机台类别</td>
+</tr>
+<tr>
+<td align="center">数据</td>
+<td align="center">Procedure</td>
+<td align="center">Procedure能够正常执行，无异常</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">数据</td>
+<td align="center">Table</td>
+<td align="center">机台信息表要与原库表保持一致</td>
+<td align="center">select count(*) from mcs.ha_fpc_jdl_equ_info</td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/01/25/%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">异步编程学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"cCFIanNSpyveizDhUHwRlAzL-gzGzoHsz","appKey":"5Jx4hkcb4Rn7nPfA6GPFkQNT","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
